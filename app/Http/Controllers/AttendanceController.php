@@ -24,7 +24,6 @@ class AttendanceController extends Controller
         }
 
         return response()->json([
-            'success' => true,
             'data' => $query->orderBy('date','desc')->paginate(20),
         ]);
     }
@@ -50,7 +49,6 @@ class AttendanceController extends Controller
         $attendance = Attendance::create($data);
         
         return response()->json([
-            'success' => true,
             'message' => 'Attendance recorded successfully',
             'data' => $attendance
         ], 201);
@@ -62,7 +60,6 @@ class AttendanceController extends Controller
 
         if (!$attendance) {
             return response()->json([
-                'success' => false,
                 'message' => 'Attendance not found',
             ], 404);
         }
@@ -78,7 +75,6 @@ class AttendanceController extends Controller
 
         if (!$attendance) {
             return response()->json([
-                'success' => false,
                 'message' => 'Attendance not found',
             ], 404);
         }
@@ -102,7 +98,6 @@ class AttendanceController extends Controller
         $attendance->update($data);
 
         return response()->json([
-            'success' => true,
             'message' => 'Attendance updated successfully',
             'data' => $attendance,
         ]);
@@ -114,7 +109,6 @@ class AttendanceController extends Controller
 
         if (!$attendance) {
             return response()->json([
-                'success' => false,
                 'message' => 'Attendance not found',
             ], 404);
         }
@@ -122,7 +116,6 @@ class AttendanceController extends Controller
         $attendance->delete();
 
         return response()->json([
-            'success' => true,
             'message' => 'Attendance deleted successfully',
         ]);
     }

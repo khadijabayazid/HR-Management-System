@@ -21,7 +21,6 @@ class JobTitleController extends Controller
             $query->where('department_id',$request->department_id);
         }
         return response()->json([
-            'success' => true,
             'data' => $query->paginate(10),
         ]);
     }
@@ -31,7 +30,6 @@ class JobTitleController extends Controller
         $jobTitle = JobTitle::create($request->validated());
 
         return response()->json([
-            'success' => true,
             'message' => 'Job Title created successfully',
             'data' => $jobTitle
         ], 201);
@@ -39,16 +37,14 @@ class JobTitleController extends Controller
 
     public function show(string $id)
     {
-        $jobTitle = JobTitle::with('departments')->find($id);
+        $jobTitle = JobTitle::with('department')->find($id);
 
         if (!$jobTitle) {
             return response()->json([
-                'success' => false,
                 'message' => 'Job Title not found',
             ], 404);
         }
         return response()->json([
-                'success' => true,
                 'data' => $jobTitle,
             ]);
     }
@@ -59,7 +55,6 @@ class JobTitleController extends Controller
 
         if (!$jobTitle) {
             return response()->json([
-                'success' => false,
                 'message' => 'Job Title not found',
             ], 404);
         }
@@ -67,7 +62,6 @@ class JobTitleController extends Controller
         $jobTitle->update($request->validated());
 
         return response()->json([
-            'success' => true,
             'message' => 'Job Title updated successfully',
             'data' => $jobTitle,
         ]);
@@ -79,7 +73,6 @@ class JobTitleController extends Controller
 
         if (!$jobTitle) {
             return response()->json([
-                'success' => false,
                 'message' => 'Job Title not found',
             ], 404);
         }
@@ -87,7 +80,6 @@ class JobTitleController extends Controller
         $jobTitle->delete();
 
         return response()->json([
-            'success' => true,
             'message' => 'Job Title deleted successfully',
         ]);
     }

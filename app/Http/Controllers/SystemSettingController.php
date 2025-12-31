@@ -14,7 +14,6 @@ class SystemSettingController extends Controller
     public function index()
     {
         return response()->json([
-            'success' => true,
             'data' => SystemSetting::all(),
         ]);
     }
@@ -33,17 +32,15 @@ class SystemSettingController extends Controller
 
         if(!$setting){
             return response()->json([
-                'success' => false,
                 'message' => 'Setting not found',
             ], 404);
         }
 
         $setting->update([
-            'setting_value' => $request->value
+            'setting_value' => $request->setting_value
         ]);
 
         return response()->json([
-            'success' => true,
             'message' => 'Setting updated successfully',
             'data' => $setting,
         ]);

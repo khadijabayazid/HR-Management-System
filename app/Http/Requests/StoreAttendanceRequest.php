@@ -24,8 +24,8 @@ class StoreAttendanceRequest extends FormRequest
         return [
             'employee_id' => 'required|exists:employees,id',
             'date' => 'required|date',
-            'check_in' => 'nullable|date',
-            'check_out' => 'nullable|date',
+            'check_in' => 'nullable|date_format:H:i',
+            'check_out' => 'nullable|date_format:H:i',
             'status' => 'required|in:late,absent_excused,absent_unexcused,missing_checkin,missing_checkout',
             'late_minutes' => 'nullable|integer|min:0',
             'notes' => 'nullable|string'

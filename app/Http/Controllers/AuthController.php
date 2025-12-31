@@ -26,7 +26,6 @@ class AuthController extends Controller
         $token = $user->createToken('api_token')->plainTextToken;
 
         return response()->json([
-            'success' => true,
             'message' => 'User registered successfully',
             'token' => $token,
             'user' => $user,
@@ -41,7 +40,6 @@ class AuthController extends Controller
         ]);
         if (!Auth::attempt($request->only('email', 'password')))
             return response()->json([
-                'success' => false,
                 'message' => 'invalid email or password',
             ], 401);
 
@@ -52,7 +50,6 @@ class AuthController extends Controller
         // create token
         $token = $user->createToken('api_Token')->plainTextToken;
         return response()->json([
-            'success' => true,
             'message' => 'Login Successfully',
             'User' => $user,
             'Token' => $token,
@@ -63,14 +60,13 @@ class AuthController extends Controller
     {
         $request->user()->currentAccessToken()->delete();
         return response()->json([
-            'success' => true,
             'message' => 'Logout Successfully',
         ]);
     }
 
-    public function me(Request $request){
+    public function me(Request $request)
+    {
         return response()->json([
-            'success' => true,
             'user' => $request->user(),
         ]);
     }

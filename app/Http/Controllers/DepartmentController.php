@@ -17,7 +17,6 @@ class DepartmentController extends Controller
             $query->where('name', 'LIKE', "%{$request->search}%");
         }
         return response()->json([
-            'success' => true,
             'data' => $query->paginate(10),
         ]);
     }
@@ -28,7 +27,6 @@ class DepartmentController extends Controller
         $department = Department::create($request->validated());
 
         return response()->json([
-            'success' => true,
             'message' => 'Department created successfully',
             'data' => $department
         ], 201);
@@ -40,12 +38,10 @@ class DepartmentController extends Controller
 
         if (!$department) {
             return response()->json([
-                'success' => false,
                 'message' => 'Department not found',
             ], 404);
         }
         return response()->json([
-                'success' => true,
                 'data' => $department,
             ]);
     }
@@ -56,7 +52,6 @@ class DepartmentController extends Controller
 
         if (!$department) {
             return response()->json([
-                'success' => false,
                 'message' => 'Department not found',
             ], 404);
         }
@@ -64,7 +59,6 @@ class DepartmentController extends Controller
         $department->update($request->validated());
 
         return response()->json([
-            'success' => true,
             'message' => 'Department updated successfully',
             'data' => $department,
         ]);
@@ -76,7 +70,6 @@ class DepartmentController extends Controller
 
         if (!$department) {
             return response()->json([
-                'success' => false,
                 'message' => 'Department not found',
             ], 404);
         }
@@ -84,7 +77,6 @@ class DepartmentController extends Controller
         $department->delete();
 
         return response()->json([
-            'success' => true,
             'message' => 'Department deleted successfully',
         ]);
     }

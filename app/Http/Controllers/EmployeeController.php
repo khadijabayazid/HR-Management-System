@@ -34,7 +34,6 @@ class EmployeeController extends Controller
         }
 
         return response()->json([
-            'success' => true,
             'data' => $query->paginate(10),
         ]);
     }
@@ -44,7 +43,6 @@ class EmployeeController extends Controller
         $employee = Employee::create($request->validated());
 
         return response()->json([
-            'success' => true,
             'message' => 'Employee created successfully',
             'data' => $employee
         ], 201);
@@ -56,12 +54,10 @@ class EmployeeController extends Controller
 
         if (!$employee) {
             return response()->json([
-                'success' => false,
                 'message' => 'Employee not found',
             ], 404);
         }
         return response()->json([
-                'success' => true,
                 'data' => $employee,
             ]);
     }
@@ -72,7 +68,6 @@ class EmployeeController extends Controller
 
         if (!$employee) {
             return response()->json([
-                'success' => false,
                 'message' => 'Employee not found',
             ], 404);
         }
@@ -80,7 +75,6 @@ class EmployeeController extends Controller
         $employee->update($request->validated());
 
         return response()->json([
-            'success' => true,
             'message' => 'Employee updated successfully',
             'data' => $employee,
         ]);
@@ -92,7 +86,6 @@ class EmployeeController extends Controller
 
         if (!$employee) {
             return response()->json([
-                'success' => false,
                 'message' => 'Employee not found',
             ], 404);
         }
@@ -100,7 +93,6 @@ class EmployeeController extends Controller
         $employee->delete();
 
         return response()->json([
-            'success' => true,
             'message' => 'Employee deleted successfully',
         ]);
     }

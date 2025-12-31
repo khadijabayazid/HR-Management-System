@@ -27,9 +27,9 @@ class UpdateEmployeeRequest extends FormRequest
             'phone' => 'required|string|max:20|unique:employees,phone,$id',
             'email' => 'required|string|email|max:255|unique:employees,email,$id',
             'national_id' => 'required|string|max:50|unique:employees,national_id,$id',
-            'job_title_id' => 'required|exists:job_title,id',
-            'employment_type' => 'required|in:full_time,part_time,temporary',
-            'hire_date' => 'required|date',
+            'job_title_id' => 'required|exists:job_titles,id',
+            'employment_type' => 'in:full_time,part_time,temporary|nullable',
+            'hire_date' => 'date|nullable',
         ];
     }
 }

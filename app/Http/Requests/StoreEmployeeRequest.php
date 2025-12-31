@@ -26,7 +26,7 @@ class StoreEmployeeRequest extends FormRequest
             'phone' => 'required|string|max:20|unique:employees,phone',
             'email' => 'required|string|email|max:255|unique:employees,email',
             'national_id' => 'required|string|max:50|unique:employees,national_id',
-            'job_title_id' => 'required|exists:job_title,id',
+            'job_title_id' => 'required|exists:job_titles,id',
             'employment_type' => 'required|in:full_time,part_time,temporary',
             'hire_date' => 'required|date',
         ];
