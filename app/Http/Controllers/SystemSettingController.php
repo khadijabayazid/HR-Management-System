@@ -4,13 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\SystemSetting;
 use Illuminate\Http\Request;
+use OpenApi\Annotations as OA;
 
 class SystemSettingController extends Controller
 {
-    /**
-     * GET /settings
-     * عرض جميع الإعدادات
-     */
     public function index()
     {
         return response()->json([
@@ -18,10 +15,6 @@ class SystemSettingController extends Controller
         ]);
     }
 
-    /**
-     * PUT /settings/{key}
-     * تعديل إعداد واحد باستخدام الـ key
-     */
     public function update(Request $request, $key)
     {
         $request->validate([

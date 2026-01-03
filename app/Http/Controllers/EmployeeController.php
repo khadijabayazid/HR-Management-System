@@ -7,10 +7,10 @@ use App\Http\Requests\UpdateEmployeeRequest;
 use App\Models\Employee;
 use App\Models\JobTitle;
 use Illuminate\Http\Request;
+use OpenApi\Annotations as OA;
 
 class EmployeeController extends Controller
 {
-
     public function index(Request $request)
     {
         $query = Employee::with(['JobTitle', 'jobTitle.department']);

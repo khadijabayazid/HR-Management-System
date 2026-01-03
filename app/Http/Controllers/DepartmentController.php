@@ -6,10 +6,10 @@ use App\Http\Requests\StoreDepartmentRequest;
 use App\Http\Requests\UpdateDepartmentRequest;
 use App\Models\Department;
 use Illuminate\Http\Request;
+use OpenApi\Annotations as OA;
 
 class DepartmentController extends Controller
 {
-
     public function index(Request $request)
     {
         $query = Department::query();

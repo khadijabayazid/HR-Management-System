@@ -7,6 +7,7 @@ use App\Http\Requests\UpdateAttendanceRequest;
 use App\Models\Attendance;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use OpenApi\Annotations as OA;
 
 class AttendanceController extends Controller
 {

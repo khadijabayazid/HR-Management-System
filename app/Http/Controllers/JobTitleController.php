@@ -6,10 +6,10 @@ use App\Http\Requests\StoreJobTitleRequest;
 use App\Http\Requests\UpdateJobTitleRequest;
 use App\Models\JobTitle;
 use Illuminate\Http\Request;
+use OpenApi\Annotations as OA;
 
 class JobTitleController extends Controller
 {
-    
     public function index(Request $request)
     {
         $query = JobTitle::with('department');
